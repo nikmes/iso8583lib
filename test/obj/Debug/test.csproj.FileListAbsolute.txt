@@ -1,0 +1,14 @@
+D:\iso8583\test\bin\Debug\test.exe.config
+D:\iso8583\test\bin\Debug\test.exe
+D:\iso8583\test\bin\Debug\test.pdb
+D:\iso8583\test\bin\Debug\ConvHelper.dll
+D:\iso8583\test\bin\Debug\iso8583.dll
+D:\iso8583\test\bin\Debug\LibTLV.dll
+D:\iso8583\test\bin\Debug\Logger.dll
+D:\iso8583\test\bin\Debug\ConvHelper.pdb
+D:\iso8583\test\bin\Debug\iso8583.pdb
+D:\iso8583\test\bin\Debug\LibTLV.pdb
+D:\iso8583\test\bin\Debug\Logger.pdb
+D:\iso8583\test\obj\Debug\test.csprojResolveAssemblyReference.cache
+D:\iso8583\test\obj\Debug\test.exe
+D:\iso8583\test\obj\Debug\test.pdb

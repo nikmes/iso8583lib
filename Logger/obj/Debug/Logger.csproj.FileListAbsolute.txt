@@ -1,0 +1,9 @@
+C:\Users\nikmes\Documents\Visual Studio 2012\Projects\Logger\bin\Debug\Logger.dll
+C:\Users\nikmes\Documents\Visual Studio 2012\Projects\Logger\bin\Debug\Logger.pdb
+C:\Users\nikmes\Documents\Visual Studio 2012\Projects\Logger\obj\Debug\Logger.csprojResolveAssemblyReference.cache
+C:\Users\nikmes\Documents\Visual Studio 2012\Projects\Logger\obj\Debug\Logger.dll
+C:\Users\nikmes\Documents\Visual Studio 2012\Projects\Logger\obj\Debug\Logger.pdb
+D:\iso8583\Logger\bin\Debug\Logger.dll
+D:\iso8583\Logger\bin\Debug\Logger.pdb
+D:\iso8583\Logger\obj\Debug\Logger.dll
+D:\iso8583\Logger\obj\Debug\Logger.pdb

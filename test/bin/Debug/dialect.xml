@@ -1,0 +1,67 @@
+<isodialect>
+  <field num="000" lenType="FIXED " lenEnc="NULL" len="004" name="" desc="Message Type Identifier" />
+  <field num="001" lenType="FIXED " lenEnc="NULL" len="016" name="" desc="Bitmap Indicator" />
+  <field num="002" lenType="LLVAR " lenEnc="BCD " len="000" name="" desc="Account Number" />
+  <field num="003" lenType="FIXED " lenEnc="NULL" len="006" name="" desc="Processing Code" />
+  <field num="004" lenType="FIXED " lenEnc="NULL" len="012" name="" desc="Transaction Amount" />
+  <field num="005" lenType="FIXED " lenEnc="NULL" len="000" name="" desc="" />
+  <field num="006" lenType="FIXED " lenEnc="NULL" len="000" name="" desc="" />
+  <field num="007" lenType="FIXED " lenEnc="NULL" len="000" name="" desc="" />
+  <field num="008" lenType="FIXED " lenEnc="NULL" len="000" name="" desc="" />
+  <field num="009" lenType="FIXED " lenEnc="NULL" len="000" name="" desc="" />
+  <field num="010" lenType="FIXED " lenEnc="NULL" len="000" name="" desc="" />
+  <field num="011" lenType="FIXED " lenEnc="NULL" len="006" name="" desc="System Trace Audit Number" />
+  <field num="012" lenType="FIXED " lenEnc="NULL" len="006" name="" desc="Local Transaction Time" />
+  <field num="013" lenType="FIXED " lenEnc="NULL" len="004" name="" desc="Local Transaction Date" />
+  <field num="014" lenType="FIXED " lenEnc="NULL" len="004" name="" desc="Account Expiration Date" />
+  <field num="015" lenType="FIXED " lenEnc="NULL" len="000" name="" desc="" />
+  <field num="016" lenType="FIXED " lenEnc="NULL" len="000" name="" desc="" />
+  <field num="017" lenType="FIXED " lenEnc="NULL" len="000" name="" desc="" />
+  <field num="018" lenType="FIXED " lenEnc="NULL" len="000" name="" desc="" />
+  <field num="015" lenType="FIXED " lenEnc="NULL" len="000" name="" desc="" />
+  <field num="020" lenType="FIXED " lenEnc="NULL" len="000" name="" desc="" />
+  <field num="021" lenType="FIXED " lenEnc="NULL" len="000" name="" desc="" />
+  <field num="022" lenType="FIXED " lenEnc="NULL" len="004" name="" desc="Point of Service Entry Mode" />
+  <field num="023" lenType="FIXED " lenEnc="NULL" len="004" name="" desc="" />
+  <field num="024" lenType="FIXED " lenEnc="NULL" len="004" name="" desc="Network International Identifier" />
+  <field num="025" lenType="FIXED " lenEnc="NULL" len="002" name="" desc="POS Condition Code" />
+  <field num="026" lenType="FIXED " lenEnc="NULL" len="000" name="" desc="" />
+  <field num="027" lenType="FIXED " lenEnc="NULL" len="000" name="" desc="" />
+  <field num="028" lenType="FIXED " lenEnc="NULL" len="000" name="" desc="" />
+  <field num="029" lenType="FIXED " lenEnc="NULL" len="000" name="" desc="" />
+  <field num="030" lenType="FIXED " lenEnc="NULL" len="000" name="" desc="" />
+  <field num="031" lenType="FIXED " lenEnc="NULL" len="000" name="" desc="" />
+  <field num="032" lenType="FIXED " lenEnc="NULL" len="000" name="" desc="" />
+  <field num="033" lenType="FIXED " lenEnc="NULL" len="000" name="" desc="" />
+  <field num="034" lenType="FIXED " lenEnc="NULL" len="000" name="" desc="" />
+  <field num="035" lenType="LLVAR " lenEnc="BCD " len="000" name="" desc="Track2 Data" />
+  <field num="036" lenType="FIXED " lenEnc="NULL" len="000" name="" desc="" />
+  <field num="037" lenType="FIXED " lenEnc="NULL" len="012" name="" desc="Retrieval Reference Number" />
+  <field num="038" lenType="FIXED " lenEnc="NULL" len="006" name="" desc="Authorization Code" />
+  <field num="039" lenType="FIXED " lenEnc="NULL" len="002" name="" desc="Response Code" />
+  <field num="040" lenType="FIXED " lenEnc="NULL" len="000" name="" desc="" />
+  <field num="041" lenType="FIXED " lenEnc="NULL" len="008" name="" desc="Card Acceptor Terminal Identification" />
+  <field num="042" lenType="FIXED " lenEnc="NULL" len="015" name="" desc="Card Acceptor Identification Code" />
+  <field num="043" lenType="FIXED " lenEnc="NULL" len="000" name="" desc="" />
+  <field num="044" lenType="FIXED " lenEnc="NULL" len="000" name="" desc="" />
+  <field num="045" lenType="FIXED " lenEnc="NULL" len="000" name="" desc="" />
+  <field num="046" lenType="FIXED " lenEnc="NULL" len="000" name="" desc="" />
+  <field num="047" lenType="FIXED " lenEnc="NULL" len="000" name="" desc="" />
+  <field num="048" lenType="FIXED " lenEnc="NULL" len="000" name="" desc="" />
+  <field num="049" lenType="FIXED " lenEnc="NULL" len="004" name="" desc="Transaction Currency Code" />
+  <field num="050" lenType="FIXED " lenEnc="NULL" len="000" name="" desc="" />
+  <field num="051" lenType="FIXED " lenEnc="NULL" len="000" name="" desc="" />
+  <field num="052" lenType="FIXED " lenEnc="NULL" len="016" name="" desc="Personal Identification Code" />
+  <field num="053" lenType="FIXED " lenEnc="NULL" len="000" name="" desc="" />
+  <field num="054" lenType="FIXED " lenEnc="NULL" len="000" name="" desc="" />
+  <field num="055" lenType="LLLVAR" lenEnc="BCD " len="000" name="" desc="ICC System Related Data" />
+  <field num="056" lenType="FIXED " lenEnc="NULL" len="000" name="" desc="" />
+  <field num="057" lenType="FIXED " lenEnc="NULL" len="000" name="" desc="" />
+  <field num="058" lenType="FIXED " lenEnc="NULL" len="000" name="" desc="" />
+  <field num="059" lenType="FIXED " lenEnc="NULL" len="000" name="" desc="" />
+  <field num="060" lenType="LLLVAR" lenEnc="BCD " len="000" name="" desc="Private Use - Batch Number + SoftID + OrigData(stan/mti) + origAmt + EncKey(110/210)" />
+  <field num="061" lenType="FIXED " lenEnc="NULL" len="000" name="" desc="" />
+  <field num="062" lenType="LLLVAR" lenEnc="BCD " len="000" name="" desc="Reconciliation totals" />
+  <field num="063" lenType="LLLVAR" lenEnc="BCD " len="000" name="" desc="Additional Data" />
+  <field num="064" lenType="FIXED " lenEnc="NULL" len="008" name="" desc="MAC - Message Authentication Code" />
+</isodialect>
