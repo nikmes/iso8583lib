@@ -22,3 +22,8 @@ D:\iso8583\LibTLV\bin\Debug\LibTLV.dll
 D:\iso8583\LibTLV\bin\Debug\LibTLV.pdb
 D:\iso8583\LibTLV\obj\Debug\LibTLV.dll
 D:\iso8583\LibTLV\obj\Debug\LibTLV.pdb
+C:\Users\nikmes\Source\Repos\iso8583lib\LibTLV\bin\Debug\LibTLV.dll
+C:\Users\nikmes\Source\Repos\iso8583lib\LibTLV\bin\Debug\LibTLV.pdb
+C:\Users\nikmes\Source\Repos\iso8583lib\LibTLV\obj\Debug\LibTLV.csprojResolveAssemblyReference.cache
+C:\Users\nikmes\Source\Repos\iso8583lib\LibTLV\obj\Debug\LibTLV.dll
+C:\Users\nikmes\Source\Repos\iso8583lib\LibTLV\obj\Debug\LibTLV.pdb

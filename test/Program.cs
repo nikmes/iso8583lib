@@ -19,7 +19,9 @@ namespace test
             iMsg.msgHeader.setHeader("360000200000");
 
             iMsg.setFieldValue(000, "0800");
+
             iMsg.setFieldValue(003, "300000");
+
             iMsg.setFieldValue(039, "00");
 
             iMsg.packForTransmission();

@@ -17,3 +17,8 @@ D:\iso8583\ConvHelper\bin\Debug\ConvHelper.dll
 D:\iso8583\ConvHelper\bin\Debug\ConvHelper.pdb
 D:\iso8583\ConvHelper\obj\Debug\ConvHelper.dll
 D:\iso8583\ConvHelper\obj\Debug\ConvHelper.pdb
+C:\Users\nikmes\Source\Repos\iso8583lib\ConvHelper\bin\Debug\ConvHelper.dll
+C:\Users\nikmes\Source\Repos\iso8583lib\ConvHelper\bin\Debug\ConvHelper.pdb
+C:\Users\nikmes\Source\Repos\iso8583lib\ConvHelper\obj\Debug\ConvHelper.csprojResolveAssemblyReference.cache
+C:\Users\nikmes\Source\Repos\iso8583lib\ConvHelper\obj\Debug\ConvHelper.dll
+C:\Users\nikmes\Source\Repos\iso8583lib\ConvHelper\obj\Debug\ConvHelper.pdb
