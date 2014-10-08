@@ -47,3 +47,14 @@ C:\Users\nikmes\Source\Repos\iso8583lib\bin\Debug\Logger.pdb
 C:\Users\nikmes\Source\Repos\iso8583lib\obj\Debug\iso8583.csprojResolveAssemblyReference.cache
 C:\Users\nikmes\Source\Repos\iso8583lib\obj\Debug\iso8583.dll
 C:\Users\nikmes\Source\Repos\iso8583lib\obj\Debug\iso8583.pdb
+C:\Users\nmessaritis\Source\Repos\iso8583lib\bin\Debug\iso8583.dll
+C:\Users\nmessaritis\Source\Repos\iso8583lib\bin\Debug\iso8583.pdb
+C:\Users\nmessaritis\Source\Repos\iso8583lib\bin\Debug\ConvHelper.dll
+C:\Users\nmessaritis\Source\Repos\iso8583lib\bin\Debug\LibTLV.dll
+C:\Users\nmessaritis\Source\Repos\iso8583lib\bin\Debug\Logger.dll
+C:\Users\nmessaritis\Source\Repos\iso8583lib\bin\Debug\ConvHelper.pdb
+C:\Users\nmessaritis\Source\Repos\iso8583lib\bin\Debug\LibTLV.pdb
+C:\Users\nmessaritis\Source\Repos\iso8583lib\bin\Debug\Logger.pdb
+C:\Users\nmessaritis\Source\Repos\iso8583lib\obj\Debug\iso8583.csprojResolveAssemblyReference.cache
+C:\Users\nmessaritis\Source\Repos\iso8583lib\obj\Debug\iso8583.dll
+C:\Users\nmessaritis\Source\Repos\iso8583lib\obj\Debug\iso8583.pdb

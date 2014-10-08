@@ -1,6 +1,6 @@
 <isodialect>
   <field num="000" lenType="FIXED " lenEnc="NULL" len="004" name="" desc="Message Type Identifier" />
-  <field num="001" lenType="FIXED " lenEnc="NULL" len="016" name="" desc="Bitmap Indicator" />
+  <field num="001" lenType="FIXED " lenEnc="NULL" len="048" name="" desc="Bitmap Indicator" />
   <field num="002" lenType="LLVAR " lenEnc="BCD " len="000" name="" desc="Account Number" />
   <field num="003" lenType="FIXED " lenEnc="NULL" len="006" name="" desc="Processing Code" />
   <field num="004" lenType="FIXED " lenEnc="NULL" len="012" name="" desc="Transaction Amount" />
@@ -64,4 +64,7 @@
   <field num="062" lenType="LLLVAR" lenEnc="BCD " len="000" name="" desc="Reconciliation totals" />
   <field num="063" lenType="LLLVAR" lenEnc="BCD " len="000" name="" desc="Additional Data" />
   <field num="064" lenType="FIXED " lenEnc="NULL" len="008" name="" desc="MAC - Message Authentication Code" />
+  <field num="065" lenType="FIXED " lenEnc="NULL" len="001" name="" desc="Bitmap Extender" />
+  <field num="066" lenType="FIXED " lenEnc="NULL" len="008" name="" desc="MAC - Message Authentication Code" />
+  <field num="067" lenType="FIXED " lenEnc="NULL" len="008" name="" desc="MAC - Message Authentication Code" />
 </isodialect>

@@ -12,3 +12,8 @@ C:\Users\nikmes\Source\Repos\iso8583lib\Logger\bin\Debug\Logger.pdb
 C:\Users\nikmes\Source\Repos\iso8583lib\Logger\obj\Debug\Logger.csprojResolveAssemblyReference.cache
 C:\Users\nikmes\Source\Repos\iso8583lib\Logger\obj\Debug\Logger.dll
 C:\Users\nikmes\Source\Repos\iso8583lib\Logger\obj\Debug\Logger.pdb
+C:\Users\nmessaritis\Source\Repos\iso8583lib\Logger\bin\Debug\Logger.dll
+C:\Users\nmessaritis\Source\Repos\iso8583lib\Logger\bin\Debug\Logger.pdb
+C:\Users\nmessaritis\Source\Repos\iso8583lib\Logger\obj\Debug\Logger.csprojResolveAssemblyReference.cache
+C:\Users\nmessaritis\Source\Repos\iso8583lib\Logger\obj\Debug\Logger.dll
+C:\Users\nmessaritis\Source\Repos\iso8583lib\Logger\obj\Debug\Logger.pdb

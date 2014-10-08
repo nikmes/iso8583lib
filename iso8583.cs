@@ -45,7 +45,7 @@ namespace iso8583
         ASCII,   // Value: 0800   30 38 30 30 [4 bytes to represent]
         BCD,     // Value: 0800 - 08 00       [2 bytes to represent]
         EBCDIC,  // Value: 
-        HEX,     
+        HEX,     // 
         NULL,    // No encoding type
     }
 
@@ -58,7 +58,7 @@ namespace iso8583
        
     public class isoHeader
     {
-        byte[] headerData;     
+        byte[] headerData;  // holds the raw data of the header
 
         public isoHeader()
         {
@@ -79,96 +79,74 @@ namespace iso8583
 
         public void setHeader(String header)
         {
-
             // sets the header data from HEX string
-
             headerData = ConvHelper.hex2bytes(header);
-
         }
 
         public void setHeader(byte[] header)
         {
-
             // sets the header data from byte array
-
             headerData = header;
-
         }
 
         public byte[] getHeaderBYTE()
         {
-
             // returns the byte array with header data
-
             return headerData;
-
         }
 
         public String getHeaderHEX()
         {
-
             // returns the hexadecimal representation of the header
-
             return ConvHelper.bytes2hex(headerData, headerData.Length, 0);
-
         }
 
         public String getHeaderBINARY()
         {
-
             // returns the binary bitmap representation of the header
-
             return ConvHelper.hex2bin(ConvHelper.bytes2hex(headerData, headerData.Length, 0));
-
         }
 
         public int getHeaderLength()
         {
-
             // returns the binary bitmap representation of the header
-
             return headerData.Length;
-
         }
     }
 
     public class isoBitmap
     {
 
-        // holds the raw bytes of bitmap
-        byte[] bitmapData;
+        byte[] m_bitmapData;        // holds the raw bytes of bitmap
 
         public isoBitmap()
         {
             // Initialize Bitmap Properties       
-            bitmapData = new byte[8];
+            m_bitmapData = new byte[24];
         }
 
         public isoBitmap(byte[] bitmap)
         {
             // Initialize bitmap with incomming raw data 
-
-            bitmapData = bitmap;
+            m_bitmapData = bitmap;
         }
 
         public isoBitmap(String bitmap)
         {
             // Initialize bitmap with incomming HEXADECIMAL representation of data 
-
-            bitmapData = ConvHelper.hex2bytes(bitmap);
+            m_bitmapData = ConvHelper.hex2bytes(bitmap);
         }
 
         public bool bitIsSet(int field)
         {
             // Checks if a bit in the bitmap is set
-
             if (field < 2)
             {
                 // nothing to set. Field 000 Message type and 001 Bitmap are always present
                 return true;
             }
 
-            String bitmapBin = ConvHelper.hex2bin(ConvHelper.bytes2hex(bitmapData, bitmapData.Length, 0));
+            String bitmapBin = ConvHelper.hex2bin(ConvHelper.bytes2hex(m_bitmapData, m_bitmapData.Length, 0));
 
             if (bitmapBin[field - 1] == '1')
             {
@@ -190,7 +168,7 @@ namespace iso8583
                 return;
             }
 
-            String bitmapBin = ConvHelper.hex2bin(ConvHelper.bytes2hex(bitmapData, bitmapData.Length, 0));
+            String bitmapBin = ConvHelper.hex2bin(ConvHelper.bytes2hex(m_bitmapData, m_bitmapData.Length, 0));
 
             StringBuilder sb = new StringBuilder(bitmapBin);
 
@@ -200,7 +178,7 @@ namespace iso8583
 
             String BitmapHex = ConvHelper.bin2hex(bitmapBin);
 
-            bitmapData = ConvHelper.hex2bytes(BitmapHex);
+            m_bitmapData = ConvHelper.hex2bytes(BitmapHex);
         }
 
         public void clearBit(int fieldNumber)
@@ -212,7 +190,7 @@ namespace iso8583
                 return;
             }
 
-            String bitmapBin = ConvHelper.hex2bin(ConvHelper.bytes2hex(bitmapData, bitmapData.Length, 0));
+            String bitmapBin = ConvHelper.hex2bin(ConvHelper.bytes2hex(m_bitmapData, m_bitmapData.Length, 0));
 
             StringBuilder sb = new StringBuilder(bitmapBin);
 
@@ -222,31 +200,27 @@ namespace iso8583
 
             String BitmapHex = ConvHelper.bin2hex(bitmapBin);
 
-            bitmapData = ConvHelper.hex2bytes(BitmapHex);
+            m_bitmapData = ConvHelper.hex2bytes(BitmapHex);
         }
 
         public byte[] getBitmapBYTE()
         {
             // Returns the raw data of bitmap to be included in outgoing buffer
-
-            return (bitmapData);
+            // should detect if first,second,third bitmap is used and return appropriate part of byte sequence
+            return (m_bitmapData);
         }
 
         public string getBitmapHEX()
         {
             // Returns the hexadecimal representation of raw data of bitmap
-
-            return ConvHelper.bytes2hex(bitmapData, 8, 0);
+            return ConvHelper.bytes2hex(m_bitmapData, m_bitmapData.Length, 0);
         }
 
         public string getBitmapBINARY()
         {
             // Returns the binary sequence representation of the bitmap            
-
-            return ConvHelper.hex2bin(ConvHelper.bytes2hex(bitmapData, 8, 0));
-
+            return ConvHelper.hex2bin(ConvHelper.bytes2hex(m_bitmapData, m_bitmapData.Length, 0));
         }
-
     }
 
     public class isoFieldDefinition
@@ -569,7 +543,7 @@ namespace iso8583
             fieldList.Add(f000);
 
             // Field[001][BITMAP]
-            isoFieldDefinition f001 = new isoFieldDefinition(1, FieldType.B, EncodingType.NULL, LengthType.FIXED, EncodingType.NULL, 16);
+            isoFieldDefinition f001 = new isoFieldDefinition(1, FieldType.B, EncodingType.NULL, LengthType.FIXED, EncodingType.NULL, 48);
             f001.setDescription("Bitmap Indicator");
             fieldList.Add(f001);
 
@@ -846,7 +820,22 @@ namespace iso8583
             // Field[064][MAC - MESSAGE AUTHENTICATION CODE]
             isoFieldDefinition f064 = new isoFieldDefinition(64, FieldType.B, EncodingType.NULL, LengthType.FIXED, EncodingType.NULL, 8);
             f064.setDescription("MAC - Message Authentication Code");
-            fieldList.Add(f064);       
+            fieldList.Add(f064);
+
+            // Field[065][BITMAP]
+            isoFieldDefinition f065 = new isoFieldDefinition(65, FieldType.B, EncodingType.NULL, LengthType.FIXED, EncodingType.NULL, 1);
+            f065.setDescription("Bitmap Extender");
+            fieldList.Add(f065);
+
+            // Field[066][MAC - MESSAGE AUTHENTICATION CODE]
+            isoFieldDefinition f066 = new isoFieldDefinition(66, FieldType.B, EncodingType.NULL, LengthType.FIXED, EncodingType.NULL, 8);
+            f066.setDescription("MAC - Message Authentication Code");
+            fieldList.Add(f066);
+
+            // Field[067][MAC - MESSAGE AUTHENTICATION CODE]
+            isoFieldDefinition f067 = new isoFieldDefinition(67, FieldType.B, EncodingType.NULL, LengthType.FIXED, EncodingType.NULL, 8);
+            f067.setDescription("MAC - Message Authentication Code");
+            fieldList.Add(f067);
         }
 
         public isoDialect (String defFileName)
@@ -953,15 +942,13 @@ namespace iso8583
                 Logger.Instance.Log("");
             }
         }
-
-
     }
 
     public class isoMessage
     {
         private List<isoField> fieldList;    // iso fields with their values
 
-        public isoDialect msgDialect;     // iso message dialect definition
+        public isoDialect msgDialect;        // iso message dialect definition
 
         public isoBitmap msgBitmap;          // iso message bitmap handler
 
@@ -975,7 +962,6 @@ namespace iso8583
 
         public int bufLength;                // the raw data buffer length in bytes
 
-
         public isoMessage(byte[] buffer, int bufLen)
         {
             fieldList       = new List<isoField>();
@@ -984,7 +970,7 @@ namespace iso8583
             
             bufLength       = bufLen;
             
-            msgDialect      = new isoDialect(64);
+            msgDialect      = new isoDialect(67);
             
             responseBuffer  = new byte[] { 0 };
             
@@ -1074,11 +1060,6 @@ namespace iso8583
             return ConvHelper.bytes2hex(requestBuffer, 2, 0);
         }
 
-        public int getLength(int fn)
-        {
-            return fieldList[fn].getLength();
-        }
-
         public int getLengthInt()
         {
             short result;
@@ -1123,7 +1104,7 @@ namespace iso8583
 
             // for each bit that exists get its value based on its definition
 
-            for (int i = 2; i < 64; i++)
+            for (int i = 2; i < this.msgDialect.getTotalFields(); i++)
             {
 
                 if (msgBitmap.bitIsSet(i))
@@ -1221,13 +1202,13 @@ namespace iso8583
                 fieldList[63].setValueBYTE(ConvHelper.hex2bytes(f63v));
             }
 
-            for (int i = 0; i < 64; i++)
+            for (int i = 0; i < this.msgDialect.getTotalFields(); i++)
             {
 
                 if (msgBitmap.bitIsSet(i))
                 {
-                    int fLen = fieldList[i].getLength();
-                    int fIndLen =fieldList[i].getLengthIndicatorLen();
+                    int fLen    = fieldList[i].getLength();
+                    int fIndLen = fieldList[i].getLengthIndicatorLen();
 
                     totLength = totLength + fLen + fIndLen;
                 }
@@ -1256,12 +1237,12 @@ namespace iso8583
             pos = pos + fieldList[0].getFieldLengthInclusive();
 
             msgBitmap.getBitmapBYTE().CopyTo(responseBuffer, pos);
-            pos += 8;
+            pos += 24;
 
             // traverse all fields that exists in the bitmap and get length indicators and values
             // and append to the buffer
 
-            for (int i = 0; i < 64; i++)
+            for (int i = 0; i < this.msgDialect.getTotalFields(); i++)
             {
                 if (i == 1 || i == 0)
                 {

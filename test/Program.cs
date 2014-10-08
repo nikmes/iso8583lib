@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using iso8583;
 using ConvertionsHelper;
+using LogingUtils;
 
 namespace test
 {
@@ -12,6 +13,8 @@ namespace test
     {
         static void Main(string[] args)
         {
+            Logger.Instance.Log("Demo program to build an ISO8583 message");
+
             iso8583.isoMessage iMsg = new isoMessage(null, 0);
 
             iMsg.msgDialect.traceToFile();
@@ -19,17 +22,13 @@ namespace test
             iMsg.msgHeader.setHeader("360000200000");
 
             iMsg.setFieldValue(000, "0800");
-
             iMsg.setFieldValue(003, "300000");
-
             iMsg.setFieldValue(039, "00");
 
             iMsg.packForTransmission();
 
-            Console.WriteLine("ISO Bitmap HEX:     [" + iMsg.getBitmapHex() + "]");
-             
+            Console.WriteLine("ISO Bitmap HEX:     [" + iMsg.getBitmapHex() + "]");         
             Console.WriteLine("ISO Bitmap Binary:  [" + iMsg.getBitmapBin() + "]");
-
             Console.WriteLine("Message Buffer HEX: [" + iMsg.getBufferHex() + "]");
 
             iMsg.msgDialect.saveToFile("dialect.xml");
