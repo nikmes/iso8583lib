@@ -13,8 +13,9 @@ namespace test
     {
         static void Main(string[] args)
         {
-            Logger.Instance.Log("Demo program to build an ISO8583 message");
 
+            Logger.Instance.Log("Demo program to build an ISO8583 message");
+            
             iso8583.isoMessage iMsg = new isoMessage(null, 0);
 
             iMsg.msgDialect.traceToFile();
@@ -24,14 +25,14 @@ namespace test
             iMsg.setFieldValue(000, "0800");
             iMsg.setFieldValue(003, "300000");
             iMsg.setFieldValue(039, "00");
-
+            iMsg.setFieldValue(067, "12345678");
             iMsg.packForTransmission();
 
-            Console.WriteLine("ISO Bitmap HEX:     [" + iMsg.getBitmapHex() + "]");         
-            Console.WriteLine("ISO Bitmap Binary:  [" + iMsg.getBitmapBin() + "]");
-            Console.WriteLine("Message Buffer HEX: [" + iMsg.getBufferHex() + "]");
+            Logger.Instance.Log("ISO Bitmap HEX:     [" + iMsg.getBitmapHex() + "]");         
+            Logger.Instance.Log("ISO Bitmap Binary:  [" + iMsg.getBitmapBin() + "]");
+            Logger.Instance.Log("Message Buffer HEX: [" + iMsg.getBufferHex() + "]");
 
-            iMsg.msgDialect.saveToFile("dialect.xml");
+            iMsg.msgDialect.saveToFile("dialects\\dialect.xml");
         }
     }
 }

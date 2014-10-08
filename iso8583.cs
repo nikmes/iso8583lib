@@ -58,59 +58,59 @@ namespace iso8583
        
     public class isoHeader
     {
-        byte[] headerData;  // holds the raw data of the header
+        byte[] m_headerData;  // holds the raw data of the header
 
         public isoHeader()
         {
-            headerData = new byte[5];
+            m_headerData = new byte[5];
         }
 
         public isoHeader(byte[] header)
         {
             // initialize header data with incomming byte array
-            headerData = header;
+            m_headerData = header;
         }
 
         public isoHeader(String header)
         {
             // sets the header data from HEX string
-            headerData = ConvHelper.hex2bytes(header);
+            m_headerData = ConvHelper.hex2bytes(header);
         }
 
         public void setHeader(String header)
         {
             // sets the header data from HEX string
-            headerData = ConvHelper.hex2bytes(header);
+            m_headerData = ConvHelper.hex2bytes(header);
         }
 
         public void setHeader(byte[] header)
         {
             // sets the header data from byte array
-            headerData = header;
+            m_headerData = header;
         }
 
         public byte[] getHeaderBYTE()
         {
             // returns the byte array with header data
-            return headerData;
+            return m_headerData;
         }
 
         public String getHeaderHEX()
         {
             // returns the hexadecimal representation of the header
-            return ConvHelper.bytes2hex(headerData, headerData.Length, 0);
+            return ConvHelper.bytes2hex(m_headerData, m_headerData.Length, 0);
         }
 
         public String getHeaderBINARY()
         {
             // returns the binary bitmap representation of the header
-            return ConvHelper.hex2bin(ConvHelper.bytes2hex(headerData, headerData.Length, 0));
+            return ConvHelper.hex2bin(ConvHelper.bytes2hex(m_headerData, m_headerData.Length, 0));
         }
 
         public int getHeaderLength()
         {
             // returns the binary bitmap representation of the header
-            return headerData.Length;
+            return m_headerData.Length;
         }
     }
 
@@ -338,7 +338,7 @@ namespace iso8583
     {
         public int      length;
         public int      number;
-        private byte[]  rawValue;
+        private byte[]  m_rawValue;
 
         public  FieldType       fieldType;
         public  EncodingType    fieldEncoding;
@@ -355,7 +355,7 @@ namespace iso8583
 
         public void setValueBYTE(byte[] myVal)
         {
-            rawValue = myVal;
+            m_rawValue = myVal;
 
             if (lengthType == LengthType.LLLVAR || lengthType == LengthType.LLVAR)
             {
@@ -376,17 +376,17 @@ namespace iso8583
 
             if (fieldType == FieldType.AN || fieldType == FieldType.ANS)
             {
-                rawValue = ConvHelper.hex2bytes(ConvHelper.ascii2hex(myVal));
+                m_rawValue = ConvHelper.hex2bytes(ConvHelper.ascii2hex(myVal));
             }
             else if (fieldType == FieldType.N || fieldType == FieldType.B)
             {
-                rawValue = ConvHelper.hex2bytes(myVal);
+                m_rawValue = ConvHelper.hex2bytes(myVal);
             }
 
             if (lengthType != LengthType.FIXED)
             {
-                // dont overide dialect definition FIXED length casuse builder will copy bytes based on that
-                // so is risky
+                // dont overide dialect definition FIXED length casuse builder will copy bytes based on that so is risky
+
                 if (fieldType == FieldType.N || fieldType == FieldType.B)
                 {
                     length = myVal.Length * 2;
@@ -402,36 +402,36 @@ namespace iso8583
 
         public string getValueASCII()
         {
-            if (rawValue != null)
-                return ConvHelper.hex2ascii(ConvHelper.bytes2hex(rawValue, rawValue.Length, 0));
+            if (m_rawValue != null)
+                return ConvHelper.hex2ascii(ConvHelper.bytes2hex(m_rawValue, m_rawValue.Length, 0));
             else
                 return String.Empty;
         }
 
         public byte[] getValueBYTE()
         {
-            return rawValue;
+            return m_rawValue;
         }
 
         public string getValueHEX()
         {
-            return ConvHelper.bytes2hex(rawValue, rawValue.Length, 0);
+            return ConvHelper.bytes2hex(m_rawValue, m_rawValue.Length, 0);
         }
 
         public string getValue()
         {
             if (this.number == 63)
             {
-                return ConvHelper.bytes2hex(rawValue, rawValue.Length, 0);
+                return ConvHelper.bytes2hex(m_rawValue, m_rawValue.Length, 0);
 
             }
             else if (this.fieldType == FieldType.ANS || this.fieldType == FieldType.A || this.fieldType == FieldType.AN)
             {
-                return ConvHelper.hex2ascii(ConvHelper.bytes2hex(rawValue, rawValue.Length, 0));
+                return ConvHelper.hex2ascii(ConvHelper.bytes2hex(m_rawValue, m_rawValue.Length, 0));
             }
             else
             {
-                return ConvHelper.bytes2hex(rawValue, rawValue.Length, 0);
+                return ConvHelper.bytes2hex(m_rawValue, m_rawValue.Length, 0);
             }
         }
 
@@ -468,7 +468,7 @@ namespace iso8583
              * (no length indicators calculated if field is LLVAR or LLLVAR)
              */
 
-            return rawValue.Length;
+            return m_rawValue.Length;
         }
 
         public int getFieldLengthInclusive()
@@ -520,16 +520,50 @@ namespace iso8583
     {
         private int numberOfFields;
 
-        private string name;
+        private string m_name; 
 
         public List<isoFieldDefinition> fieldList;
-            
+
+        public void initVISABaseIDialect() 
+        {
+            Logger.Instance.Log("Initialize VISA Base I ISO8583 Dialect");
+            setName("visa");
+        }
+        
+        public void initMASTBankNetDialect() 
+        {
+            Logger.Instance.Log("Initialize MASTERCARD BankNet ISO8583 Dialect");
+            setName("mastercard");
+        }
+        
+        public void initCUPDialect() 
+        {
+            Logger.Instance.Log("Initialize CHINA UNION PAY ISO8583 Dialect");
+            setName("cup");
+        }
+        
+        public void initAMEXDialect()
+        {
+            Logger.Instance.Log("Initialize AMEX ISO8583 Dialect");
+            setName("amex");
+        }
+        
+        public void initJCBDialect() 
+        {
+            Logger.Instance.Log("Initialize JCB ISO8583 Dialect");
+            setName("jcb");
+        }
+        
+        public void initHYPERCOMDialect() 
+        {
+            Logger.Instance.Log("Initialize HYPERCOM ISO8583 Dialect");
+            setName("hypercom");
+        }
+
         public isoDialect (int totalFields)
         {
 
             Logger.Instance.Log("Initializing ISO Dialect hardcoded...");
-
-            name = "imsp";
 
             fieldList = new List<isoFieldDefinition>();
 
@@ -841,7 +875,11 @@ namespace iso8583
         public isoDialect (String defFileName)
         {
             // initialize iso dialect form xml defintion file
-            name = "imsp";
+        }
+        
+        public void setName(String name)
+        {
+            m_name=name;
         }
         
         public isoFieldDefinition getFieldDefinition(int fieldNum)
@@ -908,7 +946,7 @@ namespace iso8583
         public void traceToConsole()
         {
             Logger.Instance.Log("Tracing dialect definition:");
-            Logger.Instance.Log("Dialect name: " + name);
+            Logger.Instance.Log("Dialect name: " + m_name);
             Logger.Instance.Log("Number of fields: " + numberOfFields.ToString());
             foreach (isoFieldDefinition f in fieldList)
             {
@@ -927,7 +965,7 @@ namespace iso8583
         public void traceToFile()
         {
             Logger.Instance.Log("Tracing dialect definition:");
-            Logger.Instance.Log("Dialect name: " + name);
+            Logger.Instance.Log("Dialect name: " + m_name);
             Logger.Instance.Log("Number of fields: " + numberOfFields.ToString());
             foreach (isoFieldDefinition f in fieldList)
             {
@@ -942,6 +980,7 @@ namespace iso8583
                 Logger.Instance.Log("");
             }
         }
+    
     }
 
     public class isoMessage
@@ -962,6 +1001,7 @@ namespace iso8583
 
         public int bufLength;                // the raw data buffer length in bytes
 
+        
         public isoMessage(byte[] buffer, int bufLen)
         {
             fieldList       = new List<isoField>();
@@ -970,7 +1010,7 @@ namespace iso8583
             
             bufLength       = bufLen;
             
-            msgDialect      = new isoDialect(67);
+            msgDialect      = new isoDialect(68);
             
             responseBuffer  = new byte[] { 0 };
             
@@ -1077,13 +1117,13 @@ namespace iso8583
         public void Parse()
         {
             // number of bytes used for lengthIndicator
-            int pos = 2;
+            int pos = 2; // !!!! Should read param for Length Indicator if inclusive/exclusive and how many bytes and what format
 
-            // Parse Header - 5 is the header length (tpdu) 
-            // we should know from header defintion how many bytes is the header
+            // Parse Header - 5 is the header length (tpdu) we should know from header defintion how many bytes is the header
             msgHeader = new isoHeader(requestBuffer.Skip(pos).Take(5).ToArray());
             pos += 5;
 
+            // get the message type
             if (this.fieldList[0].lengthType == LengthType.FIXED)
             {
                 // should be removed - it keeps field data on dialect definition
@@ -1191,11 +1231,11 @@ namespace iso8583
         {
             // calculate the total length that buffer should have so we can Rezize the buffer
 
-            int totLength = 2;
-            int lenIndicator;
-            int pos = 0;
+            int totLength = 2; // !!!! Should read param for Length Indicator if inclusive/exclusive and how many bytes and what format
 
-            totLength = totLength + msgHeader.getHeaderBYTE().Length;
+            int pos = 0; 
+
+            totLength = totLength + msgHeader.getHeaderLength();
 
             if (f63v != String.Empty)
             {
@@ -1208,27 +1248,27 @@ namespace iso8583
                 if (msgBitmap.bitIsSet(i))
                 {
                     int fLen    = fieldList[i].getLength();
+
                     int fIndLen = fieldList[i].getLengthIndicatorLen();
 
                     totLength = totLength + fLen + fIndLen;
                 }
-
             }
 
             bufLength = totLength;
 
-            //trc.Print("Total Outgoing Length: " + totLength.ToString(), richTextBox);
-            //trc.Print("Resizing Buffer to new length", richTextBox);
+            Logger.Instance.Log("Total Outgoing Buffer Length (including length indicator bytes) : " + totLength.ToString());
 
-            // important dont forget to add 2 (the message length when u resize the array)
             Array.Resize(ref responseBuffer, totLength);
 
             responseBuffer.Initialize();
 
-            totLength = totLength - 2;
+            totLength = totLength - 2; // !!!! Should read param for Length Indicator if inclusive/exclusive and how many bytes and what format
+
+            Logger.Instance.Log("Total Outgoing Buffer Length (excluding length indicator bytes) : " + totLength.ToString());
 
             ConvHelper.hex2bytes(totLength.ToString("X").PadLeft(4, '0')).CopyTo(responseBuffer, 0);
-            pos += 2;
+            pos += 2; // !!!! Should read param for Length Indicator if inclusive/exclusive and how many bytes and what format
 
             msgHeader.getHeaderBYTE().CopyTo(responseBuffer, pos);
             pos = pos + msgHeader.getHeaderLength();
@@ -1251,7 +1291,7 @@ namespace iso8583
 
                 if (msgBitmap.bitIsSet(i))
                 {
-                    lenIndicator = fieldList[i].getLengthIndicatorLen();
+                    int lenIndicator = fieldList[i].getLengthIndicatorLen();
 
                     if (lenIndicator > 0)
                     {
@@ -1286,9 +1326,6 @@ namespace iso8583
                     pos = pos + fieldList[i].getLength();
                 }
             }
-
-            // Print the raw data buffer
-            // trc.Print("ISO Message Response", richTextBox);
 
             return responseBuffer;
         }
